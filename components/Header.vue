@@ -4,8 +4,12 @@
 
       <!-- LEFT : logo + liens desktop -->
       <div class="flex items-center gap-6 sm:gap-8">
-        <NuxtLink to="/" class="text-lg sm:text-xl font-bold tracking-tighter text-[#1a1c1e] dark:text-slate-100">
-          Sunu Tawfekh
+        <NuxtLink to="/" class="flex items-center">
+       <img 
+  src="/logo1.png" 
+  alt="Sunu Tawfekh" 
+  class="h-14 sm:h-16 w-auto object-contain"
+/>
         </NuxtLink>
 
         <!-- Desktop nav -->

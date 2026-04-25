@@ -220,14 +220,14 @@ export const getVariantStockStatus = (variant: OrionProductVariant): 'in_stock' 
 }
 
 // Helper function to check if product is on sale
-export const isOnSale = (product: OrionProduct): boolean => {
-  return (product.sale_price_ttc && product.sale_price_ttc > 0 && product.sale_price_ttc < product.prix_ttc) ||
-         (product.varietes && product.varietes.some(v => v.on_sale))
+export const isOnSale = (product: any): boolean => {
+  return product.on_sale === true ||
+         (product.varietes && product.varietes.some((v: any) => v.on_sale === true))
 }
 
 // Helper function to check if variant is on sale
-export const isVariantOnSale = (variant: OrionProductVariant): boolean => {
-  return variant.on_sale && variant.sale_price_ttc > 0 && variant.sale_price_ttc < variant.prix_ttc
+export const isVariantOnSale = (variant: any): boolean => {
+  return variant.on_sale === true
 }
 
 // Helper function to get product variants with stock info

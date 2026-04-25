@@ -407,7 +407,7 @@ const selectPriceRange = (rangeId: string) => {
     if (range.custom) {
       showCustomSlider.value = true
       // Keep current custom values or reset to full range
-      if (priceRange.value.max === 50000) {
+      if (priceRange.value.max === 1000000) {
         priceRange.value.max = range.max
       }
     } else {
@@ -419,7 +419,7 @@ const selectPriceRange = (rangeId: string) => {
 }
 
 // Filter state - will be updated when products load
-const priceRange = ref({ min: 0, max: 50000 })
+const priceRange = ref({ min: 0, max: 1000000 })
 const selectedPriceRange = ref<string>('all') // Track selected predefined range
 const showCustomSlider = ref(false) // Show custom slider when "Personnalisé" is selected
 const sortBy = ref('featured')
@@ -447,43 +447,22 @@ const subCategories = computed(() => {
 // Predefined price ranges based on actual product prices
 const predefinedPriceRanges = computed(() => {
   const prices = allProducts.value.map(p => p.price || 0)
-  const actualMax = prices.length > 0 ? Math.max(...prices) : 50000
-  const actualMin = prices.length > 0 ? Math.min(...prices) : 0
+  const actualMax = prices.length > 0 ? Math.max(...prices) : 1000000
+  const maxRange = Math.max(actualMax, 1000000) // Ensure max is at least 1M
   
   return [
     { 
       id: 'all', 
       label: 'Tous les prix', 
       min: 0, 
-      max: actualMax,
-      description: `0 - ${actualMax.toLocaleString('fr-FR')} FCFA`
-    },
-    { 
-      id: 'low', 
-      label: 'Petit budget', 
-      min: 0, 
-      max: Math.min(10000, actualMax * 0.3),
-      description: `Moins de ${Math.min(10000, actualMax * 0.3).toLocaleString('fr-FR')} FCFA`
-    },
-    { 
-      id: 'medium', 
-      label: 'Budget moyen', 
-      min: Math.min(10000, actualMax * 0.3), 
-      max: Math.min(30000, actualMax * 0.7),
-      description: `${Math.min(10000, actualMax * 0.3).toLocaleString('fr-FR')} - ${Math.min(30000, actualMax * 0.7).toLocaleString('fr-FR')} FCFA`
-    },
-    { 
-      id: 'high', 
-      label: 'Budget élevé', 
-      min: Math.min(30000, actualMax * 0.7), 
-      max: actualMax,
-      description: `Plus de ${Math.min(30000, actualMax * 0.7).toLocaleString('fr-FR')} FCFA`
+      max: maxRange,
+      description: `0 - ${maxRange.toLocaleString('fr-FR')} FCFA`
     },
     { 
       id: 'custom', 
       label: 'Personnalisé', 
       min: 0, 
-      max: actualMax,
+      max: maxRange,
       custom: true,
       description: 'Choisir vos limites'
     }
@@ -558,14 +537,15 @@ const filteredProducts = computed(() => {
 // Calculate max price from products
 const maxPrice = computed(() => {
   const prices = allProducts.value.map(p => p.price || 0)
-  const actualMax = prices.length > 0 ? Math.max(...prices) : 50000
+  const actualMax = prices.length > 0 ? Math.max(...prices) : 1000000
+  const forcedMax = Math.max(actualMax, 1000000) // Force minimum 1M
   
-  // Update priceRange.max to match actual max price
-  if (priceRange.value.max === 50000 || priceRange.value.max < actualMax) {
-    priceRange.value.max = actualMax
+  // Update priceRange.max to match forced max price
+  if (priceRange.value.max < forcedMax) {
+    priceRange.value.max = forcedMax
   }
   
-  return actualMax
+  return forcedMax
 })
 
 

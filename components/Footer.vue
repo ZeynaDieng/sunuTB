@@ -1,15 +1,30 @@
 <template>
   <footer class="bg-[#e3e2e5] dark:bg-slate-950 w-full relative">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 w-full font-['Inter'] text-sm tracking-normal">
-      <div class="flex flex-col gap-6">
-        <span class="text-lg font-black text-[#1a1c1e] dark:text-slate-100">Sunu Tawfekh</span>
-        <p class="text-[#1a1c1e] dark:text-slate-400 max-w-xs">Votre boutique de confiance à Dakar. Une grande diversité de produits pour tous vos besoins depuis 2024.</p>
-        <div class="flex gap-4">
-          <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer" data-icon="share">share</span>
-          <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer" data-icon="public">public</span>
-          <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer" data-icon="campaign">campaign</span>
-        </div>
-      </div>
+  <div class="flex flex-col gap-4">
+
+  <!-- Logo centré + équilibré -->
+  <div class="flex items-center justify-start">
+    <img 
+      src="/logo1.png" 
+      alt="Sunu Tawfekh" 
+      class="h-20 w-auto object-contain"
+    />
+  </div>
+
+  <!-- Texte -->
+  <p class="text-[#1a1c1e] dark:text-slate-400 max-w-xs leading-relaxed">
+    Votre boutique de confiance à Dakar. Une grande diversité de produits pour tous vos besoins depuis 2024.
+  </p>
+
+  <!-- Social -->
+  <div class="flex gap-4 pt-2">
+    <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer">share</span>
+    <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer">public</span>
+    <span class="material-symbols-outlined text-[#6d4f8b] cursor-pointer">campaign</span>
+  </div>
+
+</div>
       <div>
         <h5 class="font-bold text-[#1a1c1e] dark:text-slate-100 mb-6 uppercase tracking-widest text-[10px]">Catégories</h5>
         <ul class="space-y-4">
@@ -46,12 +61,7 @@
     </div>
     <div class="px-12 py-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
       <span class="text-[#1a1c1e] dark:text-slate-400 text-xs">© 2024 Sunu Tawfekh. Tous Droits Réservés.</span>
-      <div class="flex gap-6 text-[10px] font-bold text-[#1a1c1e] dark:text-slate-400 tracking-widest">
-        <span>VISA</span>
-        <span>MASTERCARD</span>
-        <span>AMEX</span>
-        <span>APPLE PAY</span>
-      </div>
+     
     </div>
   </footer>
 </template>
