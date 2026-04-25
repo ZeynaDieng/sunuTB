@@ -1,75 +1,91 @@
-# Nuxt Minimal Starter
+# Sunu Tawfekh
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Boutique e-commerce complète pour le marché sénégalais avec design moderne et responsive.
 
-## Setup
+## 🚀 Features
 
-Make sure to install dependencies:
+- **Design Responsive** : Mobile-first approach avec Tailwind CSS
+- **Navigation** : Header avec menu mobile hamburger
+- **Produits** : Cards responsives avec fallback images
+- **Panier** : CartDrawer animé et responsive
+- **Pages** : Index, Shop, Profile, Checkout, Auth optimisées
+- **Technologies** : Vue 3, Nuxt 3, TypeScript, Material Design 3
+
+## 🛠️ Tech Stack
+
+- **Frontend** : Vue 3 Composition API
+- **Framework** : Nuxt 3
+- **Styling** : Tailwind CSS + Material Design 3
+- **TypeScript** : Support complet
+- **API** : Integration Orion API
+
+## 📱 Responsive Design
+
+- **Mobile** : < 640px (default)
+- **Tablette** : 640px - 1024px (sm/md)
+- **Desktop** : 1024px - 1280px (lg)
+- **Large** : > 1280px (xl)
+
+## 🚀 Démarrage
+
+### Installation
 
 ```bash
-# npm
+# Installer les dépendances
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
+# ou
 yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Développement
 
 ```bash
-# npm
+# Démarrer le serveur de développement
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
+# ou
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+L'application sera disponible sur `http://localhost:3000`
 
-Build the application for production:
+### Production
 
 ```bash
-# npm
+# Build pour production
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
+# ou
 yarn build
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
+# Preview en local
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
+# ou
 yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📁 Structure du Projet
+
+```
+├── components/          # Composants Vue
+│   ├── Header.vue      # Navigation responsive
+│   ├── ProductCard.vue # Cards produits
+│   └── CartDrawer.vue  # Panier latéral
+├── pages/              # Pages Nuxt
+│   ├── index.vue       # Page d'accueil
+│   ├── shop.vue        # Boutique
+│   ├── profile.vue     # Profil utilisateur
+│   └── checkout.vue    # Checkout
+├── stores/             # Pinia stores
+├── utils/              # Utilitaires
+└── types/              # Types TypeScript
+```
+
+## 🎨 Design System
+
+- **Couleurs** : Material Design 3
+- **Typography** : Plus Jakarta Sans
+- **Spacing** : Système responsive
+- **Components** : Réutilisables et accessibles
+
+## 📞 Contact
+
+Projet développé pour Sunu Tawfekh - Votre boutique de confiance à Dakar.
