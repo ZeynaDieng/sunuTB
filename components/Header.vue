@@ -155,18 +155,25 @@ const navLinks = [
   { to: '/shop',      label: 'Boutique',  icon: 'shopping_bag' },
   { to: '/contact',   label: 'Contact',   icon: 'mail' },
   { to: '/about',     label: 'À Propos',  icon: 'info' },
-  { to: '/blog',      label: 'Blog',      icon: 'article' },
+ // { to: '/blog',      label: 'Blog',      icon: 'article' },
   { to: '/favorites', label: 'Favoris',   icon: 'favorite' },
 ]
 
 const isActiveLink = (path: string) => {
+  // Exact match for root
   if (path === '/' && route.path === '/') return true
+  // Exact match for other routes
+  if (route.path === path) return true
+  // For nested routes, check if current path starts with the link path
   if (path !== '/' && route.path.startsWith(path)) return true
   return false
 }
 
-// Fermer le menu si la route change
-watch(() => route.path, () => { showMobileMenu.value = false })
+// Close menus when route changes
+watch(() => route.path, () => { 
+  showMobileMenu.value = false
+  showUserMenu.value = false 
+})
 
 onMounted(() => {
   auth.initializeAuth()
