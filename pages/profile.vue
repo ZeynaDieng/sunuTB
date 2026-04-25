@@ -26,10 +26,10 @@
 
       <!-- USER INFO -->
       <div class="flex flex-col">
-        <h1 class="text-white text-lg sm:text-2xl font-semibold leading-tight">
+        <h1 class="text-white text-lg sm:text-2xl font-semibold leading-tight first-letter:uppercase">
           {{ auth.fullName }}
         </h1>
-        <p class="text-white/80 text-sm">
+        <p class="text-white/80 text-sm first-letter:uppercase">
           {{ auth.user?.email }}
         </p>
       </div>
@@ -44,7 +44,7 @@
         <button
           @click="activeTab = 'profile'"
           :class="activeTab === 'profile' ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-on-surface'"
-          class="pb-4 border-b-2 font-medium transition-colors px-2"
+          class="pb-4 border-b-2 font-medium transition-colors px-2 first-letter:uppercase"
         >
           <span class="flex items-center gap-2 whitespace-nowrap">
             <span class="material-symbols-outlined">person</span>
@@ -54,7 +54,7 @@
         <button
           @click="activeTab = 'orders'"
           :class="activeTab === 'orders' ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-on-surface'"
-          class="pb-4 border-b-2 font-medium transition-colors px-2"
+          class="pb-4 border-b-2 font-medium transition-colors px-2 first-letter:uppercase"
         >
           <span class="flex items-center gap-2 whitespace-nowrap">
             <span class="material-symbols-outlined">shopping_bag</span>
@@ -64,7 +64,7 @@
         <button
           @click="activeTab = 'favorites'"
           :class="activeTab === 'favorites' ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-on-surface'"
-          class="pb-4 border-b-2 font-medium transition-colors px-2"
+          class="pb-4 border-b-2 font-medium transition-colors px-2 first-letter:uppercase"
         >
           <span class="flex items-center gap-2 whitespace-nowrap">
             <span class="material-symbols-outlined">favorite</span>
@@ -74,7 +74,7 @@
         <button
           @click="activeTab = 'settings'"
           :class="activeTab === 'settings' ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-on-surface'"
-          class="pb-4 border-b-2 font-medium transition-colors px-2"
+          class="pb-4 border-b-2 font-medium transition-colors px-2 first-letter:uppercase"
         >
           <span class="flex items-center gap-2 whitespace-nowrap">
             <span class="material-symbols-outlined">settings</span>
@@ -84,7 +84,7 @@
         <button
           @click="activeTab = 'security'"
           :class="activeTab === 'security' ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-on-surface'"
-          class="pb-4 border-b-2 font-medium transition-colors px-2"
+          class="pb-4 border-b-2 font-medium transition-colors px-2 first-letter:uppercase"
         >
           <span class="flex items-center gap-2 whitespace-nowrap">
             <span class="material-symbols-outlined">security</span>
@@ -98,7 +98,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">      <!-- Sidebar Stats -->
       <aside class="lg:col-span-1 order-2 lg:order-1">
         <div class="bg-surface-container-low rounded-xl p-4 sm:p-6 sticky top-20 lg:top-24">
-          <h3 class="font-bold text-lg mb-4">Statistiques</h3>
+          <h3 class="font-bold text-lg mb-4 first-letter:uppercase">Statistiques</h3>
           
           <div class="space-y-4">
             <div class="flex justify-between items-center p-4 bg-surface rounded-lg hover:bg-surface-container-high transition-colors">

@@ -134,12 +134,20 @@
           </div>
 
           <!-- Prix -->
-          <div class="flex items-baseline gap-3">
-            <p class="text-2xl sm:text-3xl font-bold text-primary">
-              {{ Math.round(product.price).toLocaleString('fr-FR') }} FCFA
-            </p>
-            <p v-if="product.onSale" class="text-base sm:text-lg text-on-surface-variant line-through">
-              {{ Math.round(product.originalPrice).toLocaleString('fr-FR') }} FCFA
+          <div class="mb-6">
+            <div class="flex items-baseline gap-3 mb-2">
+              <span class="text-2xl sm:text-3xl font-bold text-primary">{{ displayPrice }} FCFA</span>
+              <span v-if="!isWholesalePrice && product.onSale" class="text-sm text-on-surface-variant line-through">{{ Math.round(product.originalPrice).toLocaleString('fr-FR') }} FCFA</span>
+            </div>
+            <!-- Wholesale price indicator -->
+            <div v-if="isWholesalePrice" class="flex items-center gap-2 text-xs text-amber-600 font-medium">
+              <span class="material-symbols-outlined text-sm">sell</span>
+              <span>Prix de gros appliqué (12+ unités)</span>
+            </div>
+            <p v-else-if="product.onSale" class="text-xs text-success font-medium">Économisez {{ Math.round(product.originalPrice - product.price).toLocaleString('fr-FR') }} FCFA</p>
+            <!-- Wholesale threshold hint -->
+            <p v-else-if="(selectedVariant as any)?.prix_gros_ttc || (product as any)?.prix_gros_ttc" class="text-xs text-on-surface-variant">
+              Prix de gros disponible à partir de 12 unités
             </p>
           </div>
 
@@ -189,8 +197,11 @@
                 </div>
                 <div class="text-right flex-shrink-0">
                   <div class="flex items-baseline gap-2">
-                    <span class="text-base font-bold text-primary">{{ Math.round(selectedVariant.price).toLocaleString('fr-FR') }} FCFA</span>
-                    <span v-if="selectedVariant.onSale" class="text-xs text-on-surface-variant line-through">{{ Math.round(selectedVariant.originalPrice).toLocaleString('fr-FR') }}</span>
+                    <span class="text-base font-bold text-primary">{{ Math.round(currentPrice).toLocaleString('fr-FR') }} FCFA</span>
+                    <span v-if="!isWholesalePrice && selectedVariant.onSale" class="text-xs text-on-surface-variant line-through">{{ Math.round(selectedVariant.originalPrice).toLocaleString('fr-FR') }}</span>
+                  </div>
+                  <div v-if="isWholesalePrice && (selectedVariant as any).prix_gros_ttc" class="text-xs text-amber-600 mt-1">
+                    Prix de gros (12+)
                   </div>
                 </div>
               </div>
@@ -381,6 +392,29 @@ const canAddToCart = computed(() =>
   currentStock.value > 0 && (product.value?.type === 'simple' || selectedVariant.value !== null)
 )
 
+// Dynamic pricing based on quantity and prix_gros_ttc
+const currentPrice = computed(() => {
+  const baseProduct = selectedVariant.value || product.value
+  if (!baseProduct) return 0
+  
+  // Check if we should use wholesale price (prix_gros_ttc)
+  if (quantity.value >= 12 && (baseProduct as any).prix_gros_ttc) {
+    return (baseProduct as any).prix_gros_ttc
+  }
+  
+  // Otherwise use regular price
+  return baseProduct.price || 0
+})
+
+const displayPrice = computed(() => {
+  return Math.round(currentPrice.value).toLocaleString('fr-FR')
+})
+
+const isWholesalePrice = computed(() => {
+  const baseProduct = selectedVariant.value || product.value
+  return quantity.value >= 12 && (baseProduct as any).prix_gros_ttc !== undefined
+})
+
 const tabs = ['Description', 'Spécifications', 'Livraison & Retours']
 
 const selectVariant = (optionName: string, optionValue: string) => {
@@ -392,6 +426,8 @@ const selectVariant = (optionName: string, optionValue: string) => {
     if (match) {
       selectedVariant.value = match
       if (match.image) currentImageIndex.value = product.value?.images?.indexOf(match.image) || 0
+      // Reset quantity to 1 when variant changes
+      quantity.value = 1
     }
   }
 }
@@ -426,12 +462,13 @@ const addToCart = () => {
   cartStore.addItem({
     id: product.value.id,
     name: product.value.name,
-    price: selectedVariant.value ? selectedVariant.value.price : product.value.price,
+    price: currentPrice.value,
     quantity: quantity.value,
     image: selectedVariant.value?.image || product.value.image,
     variant: selectedVariant.value ? selectedVariant.value.title : 'Default',
     variantId: selectedVariant.value?.id,
     stock: currentStock.value,
+    isWholesale: isWholesalePrice.value,
   })
 }
 

@@ -15,7 +15,7 @@
             :key="link.to"
             :to="link.to"
             :class="isActiveLink(link.to) ? 'text-[#6d4f8b] border-b-2 border-[#6d4f8b] pb-0.5' : 'text-[#1a1c1e] hover:text-[#6d4f8b]'"
-            class="font-medium text-sm transition-colors duration-200"
+            class="font-medium text-sm transition-colors duration-200 first-letter:uppercase"
           >
             {{ link.label }}
           </NuxtLink>
@@ -40,16 +40,16 @@
             class="absolute right-0 mt-2 w-56 sm:w-64 bg-white rounded-xl shadow-lg border border-[#e5e7eb] py-2 z-50"
           >
             <div class="px-4 py-3 border-b border-[#e5e7eb]">
-              <p class="font-semibold text-[#1a1c1e] text-sm">{{ auth.fullName }}</p>
-              <p class="text-xs text-gray-500">{{ auth.user?.email }}</p>
+              <p class="font-semibold text-[#1a1c1e] text-sm first-letter:uppercase">{{ auth.fullName }}</p>
+              <p class="text-xs text-gray-500 first-letter:uppercase">{{ auth.user?.email }}</p>
             </div>
-            <NuxtLink to="/favorites" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors" @click="showUserMenu = false">
+            <NuxtLink to="/favorites" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors first-letter:uppercase" @click="showUserMenu = false">
               <span class="material-symbols-outlined text-base">favorite</span> Mes Favoris
             </NuxtLink>
-            <NuxtLink to="/profile" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors" @click="showUserMenu = false">
+            <NuxtLink to="/profile" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors first-letter:uppercase" @click="showUserMenu = false">
               <span class="material-symbols-outlined text-base">person</span> Mon Profil
             </NuxtLink>
-            <button @click="handleLogout" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors">
+            <button @click="handleLogout" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors first-letter:uppercase">
               <span class="material-symbols-outlined text-base">logout</span> Se déconnecter
             </button>
           </div>
@@ -109,7 +109,7 @@
           :to="link.to"
           @click="showMobileMenu = false"
           :class="isActiveLink(link.to) ? 'text-[#6d4f8b] bg-[#6d4f8b]/8' : 'text-[#1a1c1e] hover:bg-gray-50'"
-          class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors first-letter:uppercase"
         >
           <span class="material-symbols-outlined text-[18px] text-[#6d4f8b]/70">{{ link.icon }}</span>
           {{ link.label }}
@@ -120,7 +120,7 @@
           v-if="!auth.isAuthenticated"
           to="/auth"
           @click="showMobileMenu = false"
-          class="flex items-center gap-3 px-4 py-3 mt-1 rounded-xl font-semibold text-sm bg-[#6d4f8b] text-white transition-colors"
+          class="flex items-center gap-3 px-4 py-3 mt-1 rounded-xl font-semibold text-sm bg-[#6d4f8b] text-white transition-colors first-letter:uppercase"
         >
           <span class="material-symbols-outlined text-[18px]">person</span>
           Se connecter

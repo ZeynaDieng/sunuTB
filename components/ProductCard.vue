@@ -60,7 +60,7 @@
       <!-- 📦 STOCK (ALIGNÉ AVEC COULEUR DU SITE) -->
       <div class="absolute top-3 left-3 z-10 sm:top-4 sm:left-4">
         <div 
-          class="px-2 py-1 sm:px-3 rounded-full text-[9px] sm:text-[10px] font-medium backdrop-blur-md border border-white/20"
+          class="px-2 py-1 sm:px-3 rounded-full text-[9px] sm:text-[10px] font-medium backdrop-blur-md border border-white/20 first-letter:uppercase"
           :class="product.stockStatus === 'in_stock' 
             ? 'bg-primary/90 text-white' 
             : product.stockStatus === 'low_stock' 
@@ -79,7 +79,7 @@
         <button
           @click.prevent="addToCart"
           :disabled="!product.available || product.stockStatus === 'out_of_stock'"
-          class="w-full py-2.5 sm:py-3 rounded-lg font-bold text-xs sm:text-sm shadow-xl active:scale-95 transition-transform disabled:opacity-50"
+          class="w-full py-2.5 sm:py-3 rounded-lg font-bold text-xs sm:text-sm shadow-xl active:scale-95 transition-transform disabled:opacity-50 first-letter:uppercase"
           :class="product.stockStatus === 'out_of_stock' 
             ? 'bg-error-container text-on-error-container' 
             : product.stockStatus === 'low_stock'
@@ -99,16 +99,16 @@
     <!-- INFOS -->
     <div class="space-y-2 sm:space-y-1">
       <NuxtLink :to="`/products/${product.id}`">
-        <h4 class="text-sm sm:title-md font-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+        <h4 class="text-sm sm:title-md font-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-tight first-letter:uppercase">
           {{ product.name }}
         </h4>
       </NuxtLink>
 
       <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-        <p class="text-primary font-bold text-sm sm:text-base">{{ displayPrice }} FCFA</p>
+        <p class="text-primary font-bold text-sm sm:text-base first-letter:uppercase">{{ displayPrice }} FCFA</p>
 
         <p v-if="isOnSale && displayOriginalPrice"
-           class="text-on-surface-variant text-xs sm:text-sm line-through">
+           class="text-on-surface-variant text-xs sm:text-sm line-through first-letter:uppercase">
           {{ displayOriginalPrice }} FCFA
         </p>
       </div>

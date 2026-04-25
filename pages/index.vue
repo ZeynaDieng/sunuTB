@@ -24,15 +24,15 @@
     :class="heroVisible ? 'animate-hero-in' : 'opacity-0'"
   >
     <div class="max-w-xl py-8 sm:py-12">
-      <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-primary font-bold mb-3 sm:mb-4 block">
-        Sunu Tawfekh Dakar
+      <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-primary font-bold mb-3 sm:mb-4 block first-letter:uppercase">
+        Sunu Tawfekh Boutique 
       </span>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.05] mb-3 sm:mb-5 text-on-surface">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[1.05] mb-3 sm:mb-5 text-on-surface first-letter:uppercase">
         Votre Boutique<br/>
         de Confiance<br/>
         à Dakar
       </h1>
-      <p class="text-sm sm:text-base md:text-lg text-on-surface-variant mb-5 sm:mb-8 leading-relaxed font-light max-w-sm sm:max-w-md">
+      <p class="text-sm sm:text-base md:text-lg text-on-surface-variant mb-5 sm:mb-8 leading-relaxed font-light max-w-sm sm:max-w-md first-letter:uppercase">
         De la mode à l'électronique, de la beauté à l'alimentation Sunu Tawfekh vous offre le meilleur du marché sénégalais.
       </p>
 
@@ -87,8 +87,8 @@
     >
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-10 sm:mb-16">
-          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tighter mb-3 sm:mb-4">Nouveautés</h2>
-          <p class="text-sm sm:text-lg text-on-surface-variant">Les derniers produits arrivés dans votre boutique de Dakar.</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tighter mb-3 sm:mb-4 first-letter:uppercase">Nouveautés</h2>
+          <p class="text-sm sm:text-lg text-on-surface-variant first-letter:uppercase">Les derniers produits arrivés dans votre boutique de Dakar.</p>
         </div>
 
         <div v-if="newProducts.length > 0" class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-6 mb-8 sm:mb-12">
@@ -174,12 +174,12 @@
 
         <!-- Empty -->
         <div v-else class="text-center py-14 sm:py-20">
-          <h3 class="text-xl sm:text-2xl font-bold text-on-surface mb-4">Aucun produit trouvé</h3>
-          <p class="text-on-surface-variant text-sm sm:text-base">Revenez plus tard pour découvrir nos nouveautés.</p>
+          <h3 class="text-xl sm:text-2xl font-bold text-on-surface mb-4 first-letter:uppercase">Aucun produit trouvé</h3>
+          <p class="text-on-surface-variant text-sm sm:text-base first-letter:uppercase">Revenez plus tard pour découvrir nos nouveautés.</p>
         </div>
 
         <div class="text-center mt-6 sm:mt-0">
-          <NuxtLink to="/shop" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colors duration-300 shadow-lg shadow-primary/10 active:scale-95">
+          <NuxtLink to="/shop" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-primary/90 transition-colors duration-300 shadow-lg shadow-primary/10 active:scale-95 first-letter:uppercase">
             Voir Toutes les Nouveautés
             <span class="material-symbols-outlined">arrow_forward</span>
           </NuxtLink>
@@ -197,10 +197,10 @@
     >
       <div class="max-w-7xl mx-auto mb-8 sm:mb-16 px-4 sm:px-8 md:px-16 flex items-end justify-between gap-4">
         <div>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">Sélection du moment</h2>
-          <p class="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base text-muted-foreground">Nos produits les plus populaires</p>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground first-letter:uppercase">Sélection du moment</h2>
+          <p class="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base text-muted-foreground first-letter:uppercase">Nos produits les plus populaires</p>
         </div>
-        <NuxtLink to="/catalogue" class="hidden md:flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all flex-shrink-0">
+        <NuxtLink to="/catalogue" class="hidden md:flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all flex-shrink-0 first-letter:uppercase">
           Voir tous les produits <span>→</span>
         </NuxtLink>
       </div>
@@ -236,10 +236,10 @@
     >
       <div class="flex justify-between items-end mb-8 sm:mb-12 max-w-7xl mx-auto">
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-on-surface mb-1 sm:mb-2">Produits Vedettes</h2>
-          <p class="text-on-surface-variant text-xs sm:text-base">Une sélection de nos meilleurs produits.</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-on-surface mb-1 sm:mb-2 first-letter:uppercase">Produits Vedettes</h2>
+          <p class="text-on-surface-variant text-xs sm:text-base first-letter:uppercase">Une sélection de nos meilleurs produits.</p>
         </div>
-        <NuxtLink to="/shop" class="text-primary font-semibold hover:text-primary-container transition-colors text-sm flex-shrink-0">
+        <NuxtLink to="/shop" class="text-primary font-semibold hover:text-primary-container transition-colors text-sm flex-shrink-0 first-letter:uppercase">
           Voir Tout <span class="material-symbols-outlined text-sm align-middle">arrow_forward</span>
         </NuxtLink>
       </div>
@@ -261,7 +261,7 @@
         </div>
       </div>
       <div v-else class="max-w-7xl mx-auto text-center py-10">
-        <p class="text-on-surface-variant text-sm mb-2">No products available at the moment.</p>
+        <p class="text-on-surface-variant text-sm mb-2 first-letter:uppercase">No products available at the moment.</p>
       </div>
     </section>
 
@@ -288,12 +288,12 @@
  
         <!-- Titre -->
         <div>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tighter leading-tight text-on-surface mb-3">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tighter leading-tight text-on-surface mb-3 first-letter:uppercase">
             Commandez sur<br/>
             <span class="text-primary">WhatsApp</span><br/>
             en 2 minutes
           </h2>
-          <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed max-w-sm">
+          <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed max-w-sm first-letter:uppercase">
             Envoyez-nous un message, choisissez vos produits et recevez votre commande à domicile très rapidement.
           </p>
         </div>
@@ -314,7 +314,7 @@
             :href="whatsappUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 bg-primary text-on-primary px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base hover:bg-primary/90 transition-all duration-200 active:scale-95 shadow-lg shadow-primary/20"
+            class="inline-flex items-center gap-2.5 bg-primary text-on-primary px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base hover:bg-primary/90 transition-all duration-200 active:scale-95 shadow-lg shadow-primary/20 first-letter:uppercase"
           >
             <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -322,7 +322,7 @@
             Commander sur WhatsApp
           </a>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-on-surface-variant">Réponse en moins de 5 min</span>
+            <span class="text-xs text-on-surface-variant first-letter:uppercase">Réponse en moins de 5 min</span>
           </div>
         </div>
       </div>
@@ -332,24 +332,24 @@
         <div class="flex flex-col gap-3 w-full max-w-[220px]">
  
           <div class="self-start bg-surface-container rounded-2xl rounded-tl-sm px-4 py-3 max-w-[180px]">
-            <p class="text-xs text-on-surface font-medium mb-1">Bonjour ! 👋</p>
-            <p class="text-[11px] text-on-surface-variant">Je voudrais commander...</p>
+            <p class="text-xs text-on-surface font-medium mb-1 first-letter:uppercase">Bonjour ! 👋</p>
+            <p class="text-[11px] text-on-surface-variant first-letter:uppercase">Je voudrais commander...</p>
             <p class="text-[10px] text-on-surface-variant/50 mt-1.5 text-right">09:41</p>
           </div>
- 
+
           <div class="self-end bg-primary rounded-2xl rounded-tr-sm px-4 py-3 max-w-[190px]">
-            <p class="text-xs text-on-primary font-medium mb-1">Bonjour ! Bienvenue chez Sunu Tawfekh 🛍️</p>
-            <p class="text-[11px] text-on-primary/80">Que puis-je vous proposer ?</p>
+            <p class="text-xs text-on-primary font-medium mb-1 first-letter:uppercase">Bonjour ! Bienvenue chez Sunu Tawfekh 🛍️</p>
+            <p class="text-[11px] text-on-primary/80 first-letter:uppercase">Que puis-je vous proposer ?</p>
             <p class="text-[10px] text-on-primary/50 mt-1.5 text-right">09:41 ✓✓</p>
           </div>
- 
+
           <div class="self-start bg-surface-container rounded-2xl rounded-tl-sm px-4 py-3 max-w-[160px]">
-            <p class="text-xs text-on-surface">Une tunique taille M 🙏</p>
+            <p class="text-xs text-on-surface first-letter:uppercase">Une tunique taille M 🙏</p>
             <p class="text-[10px] text-on-surface-variant/50 mt-1.5 text-right">09:42</p>
           </div>
- 
+
           <div class="self-end bg-primary rounded-2xl rounded-tr-sm px-4 py-3 max-w-[190px]">
-            <p class="text-xs text-on-primary">Parfait ! Livraison aujourd'hui 🚀</p>
+            <p class="text-xs text-on-primary first-letter:uppercase">Parfait ! Livraison aujourd'hui 🚀</p>
             <p class="text-[10px] text-on-primary/50 mt-1.5 text-right">09:42 ✓✓</p>
           </div>
  
@@ -369,7 +369,7 @@
       :class="reviewsVisible ? 'animate-section-in' : 'opacity-0 translate-y-6'"
     >
       <div class="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4">La Voix de Nos Clients</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 first-letter:uppercase">La Voix de Nos Clients</h2>
         <div class="w-12 h-1 bg-primary mx-auto"></div>
       </div>
       <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
@@ -382,12 +382,12 @@
           <div class="flex text-secondary mb-3 sm:mb-4">
             <span v-for="s in 5" :key="s" class="material-symbols-outlined text-base sm:text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
           </div>
-          <p class="text-on-surface-variant italic mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">{{ review.text }}</p>
+          <p class="text-on-surface-variant italic mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed first-letter:uppercase">{{ review.text }}</p>
           <div class="flex items-center gap-3 sm:gap-4">
             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">{{ review.initials }}</div>
             <div>
-              <p class="text-sm font-bold">{{ review.name }}</p>
-              <p class="text-xs text-on-surface-variant">{{ review.role }}</p>
+              <p class="text-sm font-bold first-letter:uppercase">{{ review.name }}</p>
+              <p class="text-xs text-on-surface-variant first-letter:uppercase">{{ review.role }}</p>
             </div>
           </div>
         </div>
@@ -402,8 +402,8 @@
       ref="newsletterRef"
       :class="newsletterVisible ? 'animate-section-in' : 'opacity-0 translate-y-6'"
     >
-      <h2 class="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4">L'Actualité Sunu Tawfekh</h2>
-      <p class="max-w-lg text-on-surface-variant mb-7 sm:mb-10 text-sm sm:text-base">Rejoignez notre communauté pour un accès anticipé aux nouvelles collections, les tendances du marché et les offres exclusives.</p>
+      <h2 class="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4 first-letter:uppercase">L'Actualité Sunu Tawfekh</h2>
+      <p class="max-w-lg text-on-surface-variant mb-7 sm:mb-10 text-sm sm:text-base first-letter:uppercase">Rejoignez notre communauté pour un accès anticipé aux nouvelles collections, les tendances du marché et les offres exclusives.</p>
       <form @submit.prevent="subscribeNewsletter" class="w-full max-w-md flex flex-col sm:flex-row gap-3 sm:gap-4">
         <input
           v-model="newsletterEmail"
@@ -412,11 +412,11 @@
           type="email"
           required
         />
-        <button type="submit" class="bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-primary-container transition-colors active:scale-95 shadow-lg shadow-primary/20">
+        <button type="submit" class="bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-primary-container transition-colors active:scale-95 shadow-lg shadow-primary/20 first-letter:uppercase">
           S'abonner
         </button>
       </form>
-      <p class="mt-4 sm:mt-6 text-xs text-on-surface-variant opacity-60">En vous abonnant, vous acceptez nos Conditions Générales et notre Politique de Confidentialité.</p>
+      <p class="mt-4 sm:mt-6 text-xs text-on-surface-variant opacity-60 first-letter:uppercase">En vous abonnant, vous acceptez nos Conditions Générales et notre Politique de Confidentialité.</p>
     </section>
 
   </div>

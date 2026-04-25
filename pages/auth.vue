@@ -16,14 +16,14 @@
           <button
             @click="isLogin = true"
             :class="isLogin ? 'bg-primary text-on-primary' : 'text-on-surface'"
-            class="flex-1 py-2 px-4 rounded-md font-medium transition-colors"
+            class="flex-1 py-2 px-4 rounded-md font-medium transition-colors first-letter:uppercase"
           >
             Connexion
           </button>
           <button
             @click="isLogin = false"
             :class="!isLogin ? 'bg-primary text-on-primary' : 'text-on-surface'"
-            class="flex-1 py-2 px-4 rounded-md font-medium transition-colors"
+            class="flex-1 py-2 px-4 rounded-md font-medium transition-colors first-letter:uppercase"
           >
             Inscription
           </button>
@@ -32,7 +32,7 @@
         <!-- Login Form -->
         <form v-if="isLogin" @submit.prevent="handleLogin" class="space-y-6">
           <div>
-            <label class="block text-sm font-medium text-on-surface mb-2">
+            <label class="block text-sm font-medium text-on-surface mb-2 first-letter:uppercase">
               Email
             </label>
             <input
@@ -45,7 +45,7 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-on-surface mb-2">
+            <label class="block text-sm font-medium text-on-surface mb-2 first-letter:uppercase">
               Mot de passe
             </label>
             <input
@@ -60,13 +60,13 @@
           <button
             type="submit"
             :disabled="auth.isLoading"
-            class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold hover:bg-primary-container transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full bg-primary text-on-primary py-3 rounded-lg font-semibold hover:bg-primary-container transition-colors disabled:opacity-50 disabled:cursor-not-allowed first-letter:uppercase"
           >
             <span v-if="auth.isLoading" class="flex items-center justify-center">
               <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
               Connexion...
             </span>
-            <span v-else>Se connecter</span>
+            <span v-else class="first-letter:uppercase">Se connecter</span>
           </button>
         </form>
 
@@ -74,7 +74,7 @@
         <form v-else @submit.prevent="handleRegister" class="space-y-6">
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-on-surface mb-2">
+              <label class="block text-sm font-medium text-on-surface mb-2 first-letter:uppercase">
                 Prénom
               </label>
               <input
@@ -86,7 +86,7 @@
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-on-surface mb-2">
+              <label class="block text-sm font-medium text-on-surface mb-2 first-letter:uppercase">
                 Nom
               </label>
               <input
@@ -100,7 +100,7 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-on-surface mb-2">
+            <label class="block text-sm font-medium text-on-surface mb-2 first-letter:uppercase">
               Email
             </label>
             <input

@@ -4,17 +4,17 @@
     <nav class="flex items-center justify-between sm:justify-start sm:gap-4 text-sm font-medium mb-6 sm:mb-8 overflow-x-auto">
       <div class="flex items-center gap-2 text-primary">
         <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs">1</span>
-        <span>Informations</span>
+        <span class="first-letter:uppercase">Informations</span>
       </div>
       <span class="text-outline-variant">/</span>
       <div class="flex items-center gap-2 text-primary">
         <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs">2</span>
-        <span>Livraison</span>
+        <span class="first-letter:uppercase">Livraison</span>
       </div>
       <span class="text-outline-variant">/</span>
       <div class="flex items-center gap-2 text-on-surface-variant opacity-60">
         <span class="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-xs">3</span>
-        <span>Paiement</span>
+        <span class="first-letter:uppercase">Paiement</span>
       </div>
     </nav>
 
@@ -24,8 +24,8 @@
         <!-- Section : Informations de contact -->
         <section class="space-y-6">
           <div class="flex justify-between items-end">
-            <h2 class="text-2xl font-bold tracking-tight text-on-surface">Informations de contact</h2>
-            <p class="text-sm text-on-surface-variant">Déjà un compte ? <NuxtLink to="/login" class="text-primary underline">Se connecter</NuxtLink></p>
+            <h2 class="text-2xl font-bold tracking-tight text-on-surface first-letter:uppercase">Informations de contact</h2>
+            <p class="text-sm text-on-surface-variant first-letter:uppercase">Déjà un compte ? <NuxtLink to="/login" class="text-primary underline first-letter:uppercase">Se connecter</NuxtLink></p>
           </div>
           <div class="space-y-4">
             <div class="group">
@@ -220,13 +220,20 @@
                   </span>
                 </div>
               </div>
-              <div class="flex flex-col justify-between py-1 flex-1">
-                <div>
-                  <h4 class="font-semibold text-on-surface leading-tight">{{ item.product.name }}</h4>
-                  <p class="text-xs text-on-surface-variant">{{ item.product.variant || 'Par défaut' }}</p>
-                </div>
-                <span class="text-sm font-medium">{{ (item.product.price * item.quantity) }} FCFA</span>
-              </div>
+             <div class="flex flex-col gap-1 py-1 flex-1">
+  <div>
+    <h4 class="font-semibold text-on-surface leading-tight">
+      {{ item.product.name }}
+    </h4>
+    <p class="text-xs text-on-surface-variant">
+      {{ item.product.variant || 'Par défaut' }}
+    </p>
+  </div>
+
+  <span class="text-sm font-medium">
+    {{ (item.product.price * item.quantity) }} FCFA
+  </span>
+</div>
             </div>
           </div>
           <!-- Totaux -->
