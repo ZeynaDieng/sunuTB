@@ -1,0 +1,38 @@
+User-Agent: *
+Allow: /
+
+# Autoriser les pages importantes
+Allow: /shop
+Allow: /categories
+Allow: /products
+Allow: /blog
+Allow: /about
+Allow: /contact
+
+# Interdire les pages non nécessaires pour le SEO
+Disallow: /checkout
+Disallow: /order-success
+Disallow: /favorites
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /admin/
+
+# Indiquer le sitemap
+Sitemap: https://sunutawfekh.sn/sitemap.xml
+
+# Autoriser les images pour Google Images
+User-Agent: Googlebot-Image
+Allow: /images/
+Allow: /uploads/
+
+# Optimisation pour les réseaux sociaux
+User-Agent: facebookexternalhit
+Allow: /products/
+Allow: /shop/
+Allow: /
+
+# Optimisation pour Twitter
+User-Agent: Twitterbot
+Allow: /products/
+Allow: /shop/
+Allow: /

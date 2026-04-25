@@ -1,0 +1,77 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue"
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'secondary-fixed': '#ffe087',
+        'primary': '#6d4f8b',
+        'outline-variant': '#cdc3cf',
+        'on-background': '#1a1c1e',
+        'surface-tint': '#70518e',
+        'secondary-fixed-dim': '#ebc23e',
+        'on-primary-fixed': '#290a46',
+        'error-container': '#ffdad6',
+        'tertiary-container': '#757474',
+        'primary-fixed-dim': '#dcb8fd',
+        'on-surface': '#1a1c1e',
+        'tertiary-fixed': '#e4e2e2',
+        'background': '#faf9fc',
+        'outline': '#7c747f',
+        'primary-container': '#8767a6',
+        'error': '#ba1a1a',
+        'surface-dim': '#dadadc',
+        'surface-bright': '#faf9fc',
+        'tertiary': '#5c5c5c',
+        'on-tertiary': '#ffffff',
+        'on-secondary-container': '#725b00',
+        'inverse-surface': '#2f3033',
+        'surface-container': '#eeedf0',
+        'secondary': '#735c00',
+        'inverse-on-surface': '#f1f0f3',
+        'on-primary-container': '#fffbff',
+        'on-error': '#ffffff',
+        'on-tertiary-container': '#fefcfb',
+        'on-primary-fixed-variant': '#573974',
+        'on-primary': '#ffffff',
+        'on-surface-variant': '#4b454e',
+        'primary-fixed': '#f0dbff',
+        'inverse-primary': '#dcb8fd',
+        'on-secondary-fixed-variant': '#574500',
+        'surface-variant': '#e3e2e5',
+        'on-secondary': '#ffffff',
+        'on-error-container': '#93000a',
+        'surface-container-highest': '#e3e2e5',
+        'on-tertiary-fixed': '#1b1c1c',
+        'surface-container-lowest': '#ffffff',
+        'tertiary-fixed-dim': '#c8c6c6',
+        'on-secondary-fixed': '#241a00',
+        'surface': '#faf9fc',
+        'surface-container-low': '#f4f3f6',
+        'on-tertiary-fixed-variant': '#474747',
+        'surface-container-high': '#e8e8eb',
+        'secondary-container': '#fdd34d'
+      },
+      borderRadius: {
+        'DEFAULT': '0.25rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        'full': '9999px'
+      },
+      fontFamily: {
+        'headline': ['Plus Jakarta Sans'],
+        'body': ['Inter'],
+        'label': ['Inter']
+      }
+    },
+  },
+  plugins: [],
+}
