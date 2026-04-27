@@ -108,9 +108,9 @@
               <span class="material-symbols-outlined">email</span>
               <span>contact@sunutawfekh.sn</span>
             </a>
-            <a href="tel:+221338212345" class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
+            <a href="tel:+221774135353" class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
               <span class="material-symbols-outlined">phone</span>
-              <span>+221 33 821 23 45</span>
+              <span>+221 77 413 53 53</span>
             </a>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary">chat</span>

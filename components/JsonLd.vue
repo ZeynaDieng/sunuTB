@@ -25,7 +25,7 @@ const structuredData = computed(() => {
         url: 'https://sunutawfekh.sn',
         logo: 'https://sunutawfekh.sn/logo.png',
         image: 'https://sunutawfekh.sn/hero-image.jpg',
-        telephone: '+221 33 123 45 67',
+        telephone: '+221 77 413 53 53',
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Rue de la Médina, Dakar',
@@ -150,7 +150,7 @@ const structuredData = computed(() => {
         description: 'Boutique en ligne et physique à Dakar proposant des produits de qualité pour tous vos besoins',
         url: 'https://sunutawfekh.sn/shop',
         image: 'https://sunutawfekh.sn/store-image.jpg',
-        telephone: '+221 33 123 45 67',
+        telephone: '+221 77 413 53 53',
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Rue de la Médina, Dakar',

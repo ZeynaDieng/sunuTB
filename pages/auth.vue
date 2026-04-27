@@ -134,7 +134,7 @@
               v-model="registerForm.phone"
               type="tel"
               class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:outline-none transition-colors"
-              placeholder="+221 33 123 45 67"
+              placeholder="+221 77 413 53 53"
             />
           </div>
 

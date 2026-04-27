@@ -25,7 +25,7 @@
         <section class="space-y-6">
           <div class="flex justify-between items-end">
             <h2 class="text-2xl font-bold tracking-tight text-on-surface first-letter:uppercase">Informations de contact</h2>
-            <p class="text-sm text-on-surface-variant first-letter:uppercase">Déjà un compte ? <NuxtLink to="/login" class="text-primary underline first-letter:uppercase">Se connecter</NuxtLink></p>
+             <!--<p class="text-sm text-on-surface-variant first-letter:uppercase">Déjà un compte ? <NuxtLink to="/login" class="text-primary underline first-letter:uppercase">Se connecter</NuxtLink></p>-->
           </div>
           <div class="space-y-4">
             <div class="group">
@@ -253,7 +253,6 @@
             <div class="flex justify-between items-center pt-4 border-t border-outline-variant/40">
               <span class="text-lg font-bold">Total</span>
               <div class="text-right">
-                <span class="text-xs text-on-surface-variant block uppercase font-bold tracking-widest">USD</span>
                 <span class="text-2xl font-black text-primary">{{ cartStore.totalPrice }} FCFA</span>
                 
               </div>

@@ -11,8 +11,8 @@
   <!-- BG image -->
   <div class="absolute inset-0">
     <img
-      src="https://plus.unsplash.com/premium_photo-1661610756820-8dbfaaf9157e?q=80&w=2832&auto=format&fit=crop"
-      alt="Boutique Sunu Tawfekh - Grande diversité de produits à Dakar"
+      src="/bannier1.jpeg"
+      alt="Boutique Sunu Tawfekh - Votre boutique de confiance à Dakar"
       class="w-full h-full object-cover object-center"
     />
     <div class="absolute inset-0 bg-gradient-to-r from-surface/70 via-surface/40 to-transparent"></div>
@@ -547,7 +547,7 @@ const waSteps = [
 ]
  
 const whatsappUrl = computed(() => {
-  const phone = '22177000000' // +221 77 000 00 00 sans espaces ni +
+  const phone = '221774135353' // +221 77 413 53 53 sans espaces ni +
   const message = encodeURIComponent('Bonjour ! Je souhaite passer une commande sur Sunu Tawfekh.')
   return `https://wa.me/${phone}?text=${message}`
 })

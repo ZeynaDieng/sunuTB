@@ -82,7 +82,7 @@
             <span class="material-symbols-outlined text-sm">email</span>
             Email Support
           </a>
-          <a href="tel:+12125551234" class="flex items-center gap-2 text-primary hover:underline">
+          <a href="tel:+221774135353" class="flex items-center gap-2 text-primary hover:underline">
             <span class="material-symbols-outlined text-sm">phone</span>
             Call Us
           </a>

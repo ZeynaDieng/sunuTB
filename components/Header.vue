@@ -29,16 +29,15 @@
       <!-- RIGHT : actions -->
       <div class="flex items-center gap-2 sm:gap-4 text-[#6d4f8b]">
 
-        <!-- User connecté -->
-        <div v-if="auth.isAuthenticated" class="relative">
-          <button
+        <!-- User connecté - COMMENTÉ -->
+        <!-- <div v-if="auth.isAuthenticated" class="relative">
+         <button
             @click="showUserMenu = !showUserMenu"
             class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#6d4f8b] text-white flex items-center justify-center font-semibold text-sm hover:bg-[#5a4178] transition-colors active:scale-95"
           >
             {{ auth.initials }}
           </button>
 
-          <!-- Dropdown -->
           <div
             v-if="showUserMenu"
             class="absolute right-0 mt-2 w-56 sm:w-64 bg-white rounded-xl shadow-lg border border-[#e5e7eb] py-2 z-50"
@@ -47,9 +46,6 @@
               <p class="font-semibold text-[#1a1c1e] text-sm first-letter:uppercase">{{ auth.fullName }}</p>
               <p class="text-xs text-gray-500 first-letter:uppercase">{{ auth.user?.email }}</p>
             </div>
-            <NuxtLink to="/favorites" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors first-letter:uppercase" @click="showUserMenu = false">
-              <span class="material-symbols-outlined text-base">favorite</span> Mes Favoris
-            </NuxtLink>
             <NuxtLink to="/profile" class="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1a1c1e] hover:bg-gray-50 transition-colors first-letter:uppercase" @click="showUserMenu = false">
               <span class="material-symbols-outlined text-base">person</span> Mon Profil
             </NuxtLink>
@@ -57,16 +53,16 @@
               <span class="material-symbols-outlined text-base">logout</span> Se déconnecter
             </button>
           </div>
-        </div>
+        </div> --> 
 
         <!-- Login -->
-        <NuxtLink
+        <!-- <NuxtLink
           v-else
           to="/auth"
           class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-[#6d4f8b] text-white rounded-lg hover:bg-[#5a4178] transition-colors active:scale-95"
         >
           <span class="material-symbols-outlined text-[18px]">person</span>
-        </NuxtLink>
+        </NuxtLink> -->
 
         <!-- Panier -->
         <NuxtLink to="/checkout" class="relative active:scale-95 transition-transform flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9">
@@ -119,8 +115,8 @@
           {{ link.label }}
         </NuxtLink>
 
-        <!-- Auth dans le menu mobile si pas connecté -->
-        <NuxtLink
+        <!-- Login dans menu mobile - COMMENTÉ -->
+        <!-- <NuxtLink
           v-if="!auth.isAuthenticated"
           to="/auth"
           @click="showMobileMenu = false"
@@ -128,7 +124,7 @@
         >
           <span class="material-symbols-outlined text-[18px]">person</span>
           Se connecter
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
     </div>
   </Transition>
@@ -140,15 +136,16 @@
 </template>
 
 <script setup lang="ts">
+// Imports - COMMENTÉ auth
 import { useCart } from '~/stores/cart'
-import { useAuthStore } from '~/stores/auth'
+// import { useAuthStore } from '~/stores/auth'
 
 const cartStore = useCart()
-const auth = useAuthStore()
+// const auth = useAuthStore()
 const route = useRoute()
 
 const cartItemCount = computed(() => cartStore.totalItems)
-const showUserMenu = ref(false)
+// const showUserMenu = ref(false) // COMMENTÉ
 const showMobileMenu = ref(false)
 
 const navLinks = [
@@ -156,7 +153,7 @@ const navLinks = [
   { to: '/contact',   label: 'Contact',   icon: 'mail' },
   { to: '/about',     label: 'À Propos',  icon: 'info' },
  // { to: '/blog',      label: 'Blog',      icon: 'article' },
-  { to: '/favorites', label: 'Favoris',   icon: 'favorite' },
+ // { to: '/favorites', label: 'Favoris',   icon: 'favorite' },
 ]
 
 const isActiveLink = (path: string) => {
@@ -169,22 +166,24 @@ const isActiveLink = (path: string) => {
   return false
 }
 
-// Close menus when route changes
+// Close menus when route changes - COMMENTÉ auth
 watch(() => route.path, () => { 
   showMobileMenu.value = false
-  showUserMenu.value = false 
+  // showUserMenu.value = false // COMMENTÉ
 })
 
-onMounted(() => {
-  auth.initializeAuth()
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement
-    if (!target.closest('.relative')) showUserMenu.value = false
-  })
-})
+// onMounted - COMMENTÉ auth
+// onMounted(() => {
+//   auth.initializeAuth()
+//   document.addEventListener('click', (e) => {
+//     const target = e.target as HTMLElement
+//     if (!target.closest('.relative')) showUserMenu.value = false
+//   })
+// })
 
-const handleLogout = () => {
-  auth.logout()
-  showUserMenu.value = false
-}
+// handleLogout - COMMENTÉ
+// const handleLogout = () => {
+//   auth.logout()
+//   showUserMenu.value = false
+// }
 </script>
