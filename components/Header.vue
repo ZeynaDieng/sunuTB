@@ -177,14 +177,15 @@ onMounted(() => {
   // Initialiser le panier depuis localStorage
   cartStore.initializeCart()
   
-  // auth.initializeAuth() // COMMENTÉ
+  // Code d'authentification commenté
+  // auth.initializeAuth()
   // document.addEventListener('click', (e) => {
   //   const target = e.target as HTMLElement
-//     if (!target.closest('.relative')) showUserMenu.value = false
-//   })
-// })
+  //   if (!target.closest('.relative')) showUserMenu.value = false
+  // })
+})
 
-// handleLogout - COMMENTÉ
+// Fonction de logout commentée
 // const handleLogout = () => {
 //   auth.logout()
 //   showUserMenu.value = false
