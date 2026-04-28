@@ -153,7 +153,7 @@ const navLinks = [
   { to: '/contact',   label: 'Contact',   icon: 'mail' },
   { to: '/about',     label: 'À Propos',  icon: 'info' },
  // { to: '/blog',      label: 'Blog',      icon: 'article' },
- // { to: '/favorites', label: 'Favoris',   icon: 'favorite' },
+  { to: '/favorites', label: 'Favoris',   icon: 'favorite' },
 ]
 
 const isActiveLink = (path: string) => {
@@ -172,11 +172,14 @@ watch(() => route.path, () => {
   // showUserMenu.value = false // COMMENTÉ
 })
 
-// onMounted - COMMENTÉ auth
-// onMounted(() => {
-//   auth.initializeAuth()
-//   document.addEventListener('click', (e) => {
-//     const target = e.target as HTMLElement
+// onMounted - Initialiser le panier pour sauvegarde longue durée
+onMounted(() => {
+  // Initialiser le panier depuis localStorage
+  cartStore.initializeCart()
+  
+  // auth.initializeAuth() // COMMENTÉ
+  // document.addEventListener('click', (e) => {
+  //   const target = e.target as HTMLElement
 //     if (!target.closest('.relative')) showUserMenu.value = false
 //   })
 // })

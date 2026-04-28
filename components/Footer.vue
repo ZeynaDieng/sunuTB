@@ -54,7 +54,8 @@
         <ul class="space-y-4">
           <li><NuxtLink to="/contact" class="text-[#4b5563] dark:text-slate-400 hover:text-[#6d4f8b] transition">Nous contacter</NuxtLink></li>
           <li><NuxtLink to="/about" class="text-[#4b5563] dark:text-slate-400 hover:text-[#6d4f8b] transition">À propos</NuxtLink></li>
-          <li><NuxtLink to="/checkout" class="text-[#4b5563] dark:text-slate-400 hover:text-[#6d4f8b] transition">Mon panier</NuxtLink></li>
+          <li><NuxtLink to="/terms" class="text-[#4b5563] dark:text-slate-400 hover:text-[#6d4f8b] transition">Conditions d'utilisation</NuxtLink></li>
+          <li><NuxtLink to="/privacy" class="text-[#4b5563] dark:text-slate-400 hover:text-[#6d4f8b] transition">Politique de confidentialité</NuxtLink></li>
         </ul>
       </div>
 

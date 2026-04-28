@@ -41,7 +41,7 @@
       </NuxtLink>
 
       <!-- ❤️ FAVORI (COEUR REMPLI STYLE INSTAGRAM) -->
-      <!--  <div class="absolute top-3 right-3 z-20 sm:top-4 sm:right-4">
+      <div class="absolute top-3 right-3 z-20 sm:top-4 sm:right-4">
         <button
           @click.prevent.stop="toggleFavorite"
           class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300 hover:scale-110 active:scale-95"
@@ -55,7 +55,7 @@
             {{ isFavorite ? 'favorite' : 'favorite_border' }}
           </span>
         </button>
-      </div> -->
+      </div>
 
       <!-- 📦 STOCK (ALIGNÉ AVEC COULEUR DU SITE) -->
       <div class="absolute top-3 left-3 z-10 sm:top-4 sm:left-4">

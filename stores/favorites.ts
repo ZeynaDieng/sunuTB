@@ -1,5 +1,16 @@
 import { defineStore } from 'pinia'
 import type { AdaptedProduct } from '~/utils/productAdapter'
+import { 
+  getGuestId, 
+  normalizePhoneNumber, 
+  isValidSenegalesePhone, 
+  debounce, 
+  apiCall, 
+  API_CONFIG, 
+  type FavoriteSyncRequest,
+  type FavoriteResponse,
+  type LinkGuestRequest
+} from '~/utils/guestManager'
 
 export interface FavoriteItem {
   productId: string
@@ -11,7 +22,13 @@ export const useFavoritesStore = defineStore('favorites', {
   state: () => ({
     items: [] as FavoriteItem[],
     isLoading: false,
-    error: null as string | null
+    error: null as string | null,
+    // Nouveaux états pour la synchronisation
+    isSyncing: false,
+    syncError: null as string | null,
+    lastSyncDate: null as string | null,
+    guestId: null as string | null,
+    linkedPhone: null as string | null
   }),
 
   getters: {
@@ -195,6 +212,134 @@ export const useFavoritesStore = defineStore('favorites', {
             notification.remove()
           }, 300)
         }, 3000)
+      }
+    },
+
+    // === NOUVELLES FONCTIONS DE SYNCHRONISATION ===
+
+    // Initialiser le guest_id
+    initializeGuest() {
+      if (typeof window !== 'undefined') {
+        this.guestId = getGuestId()
+      }
+    },
+
+    // Récupérer les favoris depuis le téléphone (avec debounce)
+    fetchFavoritesByPhone: debounce(async (phone: string) => {
+      const normalizedPhone = normalizePhoneNumber(phone)
+      
+      if (!isValidSenegalesePhone(normalizedPhone)) {
+        this.syncError = 'Numéro de téléphone invalide'
+        return
+      }
+
+      try {
+        this.isSyncing = true
+        this.syncError = null
+        
+        // Appel API pour récupérer les favoris
+        const response = await apiCall<FavoriteResponse[]>(
+          `${API_CONFIG.ENDPOINTS.FAVORITES_BY_PHONE}?phone=${normalizedPhone}`
+        )
+        
+        if (response.length > 0) {
+          // Fusionner avec les favoris existants
+          this.mergeFavorites(response)
+          this.showNotification('Vos favoris ont été retrouvés !', 'success')
+        }
+        
+        // Lier le guest_id au téléphone
+        await this.linkGuestToPhone(normalizedPhone)
+        
+      } catch (error) {
+        console.error('Erreur récupération favoris:', error)
+        this.syncError = 'Impossible de récupérer vos favoris'
+        this.showNotification('Erreur lors de la synchronisation', 'error')
+      } finally {
+        this.isSyncing = false
+      }
+    }, 1000), // 1 seconde de debounce
+
+    // Fusionner les favoris existants avec ceux récupérés
+    mergeFavorites(serverFavorites: FavoriteResponse[]) {
+      const serverProductIds = new Set(serverFavorites.map(f => f.productId))
+      const localProductIds = new Set(this.items.map(f => f.productId))
+      
+      // Ajouter les favoris du serveur qui ne sont pas en local
+      const newFavorites = serverFavorites
+        .filter(fav => !localProductIds.has(fav.productId))
+        .map(fav => ({
+          productId: fav.productId,
+          product: {} as AdaptedProduct, // Sera rempli lors de la synchronisation complète
+          addedAt: fav.addedAt
+        }))
+
+      if (newFavorites.length > 0) {
+        this.items = [...this.items, ...newFavorites]
+        this.saveToLocalStorage()
+      }
+    },
+
+    // Synchroniser les favoris avec le serveur
+    async syncFavorites(phone: string) {
+      const normalizedPhone = normalizePhoneNumber(phone)
+      
+      if (!isValidSenegalesePhone(normalizedPhone)) {
+        this.syncError = 'Numéro de téléphone invalide'
+        return
+      }
+
+      try {
+        this.isSyncing = true
+        this.syncError = null
+        
+        const syncData: FavoriteSyncRequest = {
+          guestId: this.guestId!,
+          phone: normalizedPhone,
+          favorites: this.items.map(item => ({
+            productId: item.productId,
+            addedAt: item.addedAt
+          }))
+        }
+
+        // Envoyer les favoris au serveur
+        await apiCall(API_CONFIG.ENDPOINTS.SYNC_FAVORITES, {
+          method: 'POST',
+          body: JSON.stringify(syncData)
+        })
+
+        this.lastSyncDate = new Date().toISOString()
+        this.linkedPhone = normalizedPhone
+        
+        this.showNotification('Favoris synchronisés avec succès', 'success')
+        
+      } catch (error) {
+        console.error('Erreur synchronisation:', error)
+        this.syncError = 'Erreur lors de la synchronisation'
+        this.showNotification('Erreur lors de la synchronisation', 'error')
+      } finally {
+        this.isSyncing = false
+      }
+    },
+
+    // Lier le guest_id à un numéro de téléphone
+    async linkGuestToPhone(phone: string) {
+      try {
+        const linkData: LinkGuestRequest = {
+          guestId: this.guestId!,
+          phone
+        }
+
+        await apiCall(API_CONFIG.ENDPOINTS.LINK_GUEST, {
+          method: 'POST',
+          body: JSON.stringify(linkData)
+        })
+
+        this.linkedPhone = phone
+        
+      } catch (error) {
+        console.error('Erreur liaison guest:', error)
+        // Ne pas afficher d'erreur à l'utilisateur, c'est transparent
       }
     }
   }

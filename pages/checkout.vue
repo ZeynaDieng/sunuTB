@@ -38,6 +38,26 @@
                 required
               />
             </div>
+            <div class="group">
+              <label class="block text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-2 ml-1">Numéro de téléphone</label>
+              <input 
+                v-model="contactInfo.phone"
+                @input="onPhoneInput"
+                class="w-full bg-surface-container-low border-none rounded-lg px-4 py-4 ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary transition-all outline-none" 
+                placeholder="77 123 45 67" 
+                type="tel"
+                required
+              />
+              <!-- Indicateur de synchronisation -->
+              <div v-if="favorites.isSyncing" class="mt-2 text-xs text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px] animate-spin">sync</span>
+                Synchronisation de vos favoris...
+              </div>
+              <div v-else-if="favorites.syncError" class="mt-2 text-xs text-error flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">error</span>
+                {{ favorites.syncError }}
+              </div>
+            </div>
             <div class="flex items-center gap-3 px-1">
               <input 
                 v-model="contactInfo.newsletter"
@@ -192,7 +212,16 @@
           <h3 class="text-xl font-bold tracking-tight text-on-surface">Récapitulatif de commande</h3>
           <!-- Liste des produits -->
           <div class="space-y-6">
-            <div v-for="item in cartStore.items" :key="item.product.id" class="flex gap-4">
+            <div v-for="item in cartStore.items" :key="item.product.id" class="flex gap-4 relative group">
+              <!-- Bouton de suppression -->
+              <button
+                @click="removeItem(item.product.id)"
+                class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600 z-10"
+                title="Retirer cet article"
+              >
+                <span class="material-symbols-outlined text-[14px]">close</span>
+              </button>
+              
               <div class="w-20 h-24 rounded-lg bg-surface-container-highest overflow-hidden relative shrink-0">
                 <!-- Image avec fallback élégant -->
                 <img 
@@ -230,9 +259,12 @@
     </p>
   </div>
 
-  <span class="text-sm font-medium">
-    {{ (item.product.price * item.quantity) }} FCFA
-  </span>
+  <div class="flex justify-between items-center">
+    <span class="text-sm text-on-surface-variant">Quantité: {{ item.quantity }}</span>
+    <span class="text-sm font-medium">
+      {{ (item.product.price * item.quantity) }} FCFA
+    </span>
+  </div>
 </div>
             </div>
           </div>
@@ -246,10 +278,7 @@
               <span class="text-on-surface-variant">Livraison</span>
               <span class="text-sm italic">Calculée à l'étape suivante</span>
             </div>
-            <div class="flex justify-between items-center">
-              <span class="text-on-surface-variant">Taxes estimées</span>
-              <span class="font-medium">{{ cartStore.totalPrice * 0.1 }} FCFA</span>
-            </div>
+            <!-- Taxes supprimées -->
             <div class="flex justify-between items-center pt-4 border-t border-outline-variant/40">
               <span class="text-lg font-bold">Total</span>
               <div class="text-right">
@@ -280,6 +309,7 @@
 <script setup lang="ts">
 import { useCart } from '~/stores/cart'
 import { useAuthStore } from '~/stores/auth'
+import { useFavoritesStore } from '~/stores/favorites'
 
 // Balises meta
 useHead({
@@ -291,6 +321,7 @@ useHead({
 
 const cartStore = useCart()
 const auth = useAuthStore()
+const favorites = useFavoritesStore()
 const router = useRouter()
 
 // Initialize auth store
@@ -323,6 +354,7 @@ const hasValidImage = (imageUrl: string | undefined) => {
 // Données du formulaire
 const contactInfo = ref({
   email: '',
+  phone: '',
   newsletter: false
 })
 
@@ -340,9 +372,25 @@ const paymentInfo = ref({
   cvv: ''
 })
 
-// Calcul des totaux
-const tax = computed(() => cartStore.totalPrice * 0.08) // Taux de taxe 8%
-const total = computed(() => cartStore.totalPrice + tax.value)
+// Calcul des totaux (sans taxes)
+// const tax = computed(() => cartStore.totalPrice * 0.08) // Taxes supprimées
+const total = computed(() => cartStore.totalPrice) // Total sans taxes
+
+// Fonction pour retirer un article du panier
+const removeItem = (productId: string) => {
+  cartStore.removeItem(productId)
+}
+
+// Fonction pour gérer la saisie du téléphone et synchroniser les favoris
+const onPhoneInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const phone = target.value
+  
+  // Lancer la récupération des favoris si le numéro est valide (9 chiffres)
+  if (phone.replace(/\D/g, '').length === 9) {
+    favorites.fetchFavoritesByPhone(phone)
+  }
+}
 
 const placeOrder = async () => {
   try {
@@ -389,9 +437,22 @@ const placeOrder = async () => {
       user: auth.user
     })
     
-    // Clear cart and redirect to success page
+    // Generate order data and redirect to success page
+    const orderId = `ST-${Date.now().toString().slice(-8)}`
+    const orderTotal = total.value
+    
+    // Store order data temporarily before clearing cart
+    navigateTo({
+      path: '/order-success',
+      query: {
+        orderId: orderId,
+        total: orderTotal.toString(),
+        email: contactInfo.value.email
+      }
+    })
+    
+    // Clear cart after redirect
     cartStore.clearCart()
-    navigateTo('/order-success')
     
   } catch (error) {
     console.error('Error during checkout:', error)
